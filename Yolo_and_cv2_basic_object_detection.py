@@ -14,7 +14,7 @@ colors = Colors()
 while True:
     ret, frame = cap.read()
     if not ret:
-        print("Không thể đọc khung hình từ camera.")
+        print("Camera is not available.")
         break
 
     # Object prediction
@@ -28,7 +28,7 @@ while True:
             cls_id = int(cls_id)
             conf = float(conf)
             color = colors(cls_id)
-            label = f"{model.names[cls_id]} {conf:.2f}"  # thêm tên + độ tin cậy
+            label = f"{model.names[cls_id]} {conf:.2f}"  
             annotator.box_label(box, label=label, color=color)
 
         frame = annotator.result()
